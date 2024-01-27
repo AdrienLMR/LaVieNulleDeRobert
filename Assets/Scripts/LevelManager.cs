@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-	[SerializeField] private List<string> allLevelToLoad = new List<string>();
+	[SerializeField] private List<string> allLevelsToLoad = new List<string>();
 	private string currentLevel = default;
 	private bool unloadFinished = true;
 	private int indexLevel = -1;
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
 	private void ChangeLevel()
 	{
 		indexLevel++;
-		StartCoroutine(LoadLevel(allLevelToLoad[indexLevel]));
+		StartCoroutine(LoadLevel(allLevelsToLoad[indexLevel]));
 	}
 
 	private IEnumerator LoadLevel(string levelToLoad)
