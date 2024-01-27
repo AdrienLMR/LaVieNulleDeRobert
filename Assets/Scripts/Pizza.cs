@@ -5,13 +5,15 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     Transform couteau;
-    Transform centre;
+    Transform selection;
     [SerializeField] float pizzaSize = 5.0f;
+    private bool isAnimating = false;
 
     // Start is called before the first frame update
     void Start()
     {
         couteau = transform.Find("couteau");
+        selection = transform.Find("selection");
     }
 
     // Update is called once per frame
@@ -24,5 +26,7 @@ public class NewBehaviourScript : MonoBehaviour
         direction = direction.normalized;
         
         couteau.position = transform.position + pizzaSize * direction;
+        selection.position = transform.position + pizzaSize * 0.52f * direction;
     }
+
 }
