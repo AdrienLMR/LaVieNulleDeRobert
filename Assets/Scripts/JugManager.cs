@@ -240,12 +240,16 @@ public class JugManager : MonoBehaviour
         Vector3 direction;
         float force;
 
+        float randomAngle;
+
         if (Vector3.Dot(currentVelocity, minAngleVectorDirectionWaterDrop) > 0 &&
             Vector3.Dot(currentVelocity, maxAngleVectorDirectionWaterDrop) > 0)
         {
             for (int i = 0; i < nWaterDrops; i++)
             {
-                waterDrop = Instantiate(waterDropPrefab, particleSystem.position, UnityEngine.Random.rotation);
+                randomAngle = UnityEngine.Random.Range(0, 360);
+
+                waterDrop = Instantiate(waterDropPrefab, particleSystem.position, Quaternion.AngleAxis(randomAngle, Vector3.forward));
 
                 direction = Quaternion.AngleAxis(UnityEngine.Random.Range(-waterDropOffset, waterDropOffset), Vector3.forward) * currentVelocity;
 

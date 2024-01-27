@@ -85,8 +85,8 @@ MonoBehaviour:
   moveJugUpSpeed: 2
   rotateSpeed: 20
   angleMaxRotation: 10
-  nMinWaterDrop: 2
-  nMaxWaterDrop: 10
+  nMinWaterDrop: 1
+  nMaxWaterDrop: 5
   waterDropOffset: 10
   nShake: 5
   shakeTime: 7.5
@@ -96,6 +96,6 @@ MonoBehaviour:
   shakeVibratoEnd: 15
   minAngleVectorDirectionWaterDrop: {x: -0.8, y: -0.2, z: 0}
   maxAngleVectorDirectionWaterDrop: {x: 0, y: 1, z: 0}
-  waterForce: 100
-  minWaterForce: 5
-  maxWaterForce: 100
+  waterForce: 50
+  minWaterForce: 3
+  maxWaterForce: 50
