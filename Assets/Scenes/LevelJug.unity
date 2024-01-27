@@ -368,18 +368,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxJugHeight: 5.5
-  minJugHeightOnCollide: 3
-  followingSpeed: 2
-  moveJugUpSpeed: 2
-  rotateSpeed: 20
-  angleMaxRotation: 10
-  nShake: 5
-  shakeTime: 7.5
-  shakeForceStart: 0.1
-  shakeForceEnd: 3
+  maxJugHeight: 5
+  minJugHeightOnCollide: 4
+  followingSpeed: 4.5
+  moveJugUpSpeed: 5
+  rotateSpeed: 25
+  angleMaxRotation: 15
+  nShake: 6
+  shakeTime: 7
+  shakeForceStart: 0.2
+  shakeForceEnd: 2.2
   shakeVibratoStart: 10
-  shakeVibratoEnd: 30
+  shakeVibratoEnd: 25
 --- !u!1 &332239757
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +661,7 @@ RectTransform:
   m_GameObject: {fileID: 1204130763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 332239758}
@@ -671,7 +671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 3.33}
+  m_AnchoredPosition: {x: -0, y: 0.53}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1220020845
