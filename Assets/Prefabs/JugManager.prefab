@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2232039012757605392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7450889792156568204}
+  - component: {fileID: 8282209352165321682}
+  m_Layer: 0
+  m_Name: JugManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7450889792156568204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232039012757605392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8282209352165321682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232039012757605392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18edd45b765eda4ebd4520287a18950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  jugContainer: {fileID: 0}
+  shakeContainer: {fileID: 0}
+  jug: {fileID: 0}
+  jugPoint: {fileID: 0}
+  hand: {fileID: 0}
+  arm: {fileID: 0}
+  particleSystem: {fileID: 0}
+  colliderOnCollideTopLeft: {fileID: 0}
+  colliderOnCollideBottomRight: {fileID: 0}
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.013402552
+      outSlope: 0.004715557
+      tangentMode: 1
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.69956356
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 11.072373
+      outSlope: 11.072373
+      tangentMode: 0
+      weightedMode: 1
+      inWeight: 0.071290016
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waterDropPrefab: {fileID: 1490798308924884055, guid: 67438fd528264e1499bed8676b5f80af, type: 3}
+  maxJugHeight: 5.5
+  minJugHeightOnCollide: 3
+  followingSpeed: 2
+  moveJugUpSpeed: 2
+  rotateSpeed: 20
+  angleMaxRotation: 10
+  nMinWaterDrop: 2
+  nMaxWaterDrop: 10
+  waterDropOffset: 10
+  nShake: 5
+  shakeTime: 7.5
+  shakeForceStart: 0.1
+  shakeForceEnd: 3
+  shakeVibratoStart: 10
+  shakeVibratoEnd: 15
+  minAngleVectorDirectionWaterDrop: {x: -0.8, y: -0.2, z: 0}
+  maxAngleVectorDirectionWaterDrop: {x: 0, y: 1, z: 0}
+  waterForce: 100
+  minWaterForce: 5
+  maxWaterForce: 100

@@ -1,7 +1,5 @@
 using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -9,19 +7,21 @@ public class JugManager : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private Camera _camera = default;
-    
+
     [SerializeField] private Transform jugContainer = default;
     [SerializeField] private Transform shakeContainer = default;
     [SerializeField] private Transform jug = default;
     [SerializeField] private Transform jugPoint = default;
     [SerializeField] private Transform hand = default;
     [SerializeField] private Transform arm = default;
+    [SerializeField] private Transform particleSystem = default;
 
     [SerializeField] private Transform colliderOnCollideTopLeft = default;
     [SerializeField] private Transform colliderOnCollideBottomRight = default;
 
-    [SerializeField] private AnimationCurve shakeEase = default;
+    [SerializeField] private AnimationCurve shakeCurve = default;
 
+    [SerializeField] private WaterDrop waterDropPrefab = default;
 
     [Header("Values")]
     [SerializeField] private float maxJugHeight = 0f;
@@ -33,6 +33,13 @@ public class JugManager : MonoBehaviour
 
     [SerializeField] private float angleMaxRotation = 0f;
 
+    [SerializeField] private float nMinWaterDrop = 0f;
+    [SerializeField] private float nMaxWaterDrop = 0f;
+
+    [SerializeField] private float waterDropOffset = 0f;
+
+    [SerializeField] private Tweener shakeAtStart;
+
     [Header("ShakeValues")]
     [SerializeField] private int nShake = 0;
     [SerializeField] private float shakeTime = 0f;
@@ -41,9 +48,15 @@ public class JugManager : MonoBehaviour
     [SerializeField] private int shakeVibratoStart = 0;
     [SerializeField] private int shakeVibratoEnd = 0;
 
+    [SerializeField] private Vector3 minAngleVectorDirectionWaterDrop = Vector3.zero;
+    [SerializeField] private Vector3 maxAngleVectorDirectionWaterDrop = Vector3.zero;
+    [SerializeField] private float waterForce = 0f;
+    [SerializeField] private float minWaterForce = 0f;
+    [SerializeField] private float maxWaterForce = 0f;
 
+    private float elapsedShakeTimeFromStart = 0f;
     private Quaternion targetRotation;
-    private float timeFromStartShake = 0f;
+    private Vector3 lastPositionShakeContainer;
 
     private Action DoAction;
 
@@ -53,6 +66,7 @@ public class JugManager : MonoBehaviour
         SetModeVoid();
 
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
 
         jug.rotation.ToAngleAxis(out float currentAngle, out Vector3 axis);
         targetRotation = Quaternion.AngleAxis(currentAngle + angleMaxRotation, axis);
@@ -93,7 +107,12 @@ public class JugManager : MonoBehaviour
     private void DoActionVoid()
     {
         if (Input.GetMouseButtonDown(0))
+        {
             SetModePlay();
+
+            shakeAtStart = shakeContainer.DOShakePosition(1f, 0.05f, 10, 90f, false, false, ShakeRandomnessMode.Harmonic).SetLoops(-1);
+            shakeAtStart.Play();
+        }
     }
 
     private void DoActionPlay()
@@ -115,11 +134,12 @@ public class JugManager : MonoBehaviour
     private void DoActionShake()
     {
         FollowMouse();
-
-        //timeFromStartShake += Time.deltaTime;
+        elapsedShakeTimeFromStart += Time.deltaTime;
+        SpawnParticle();
     }
     #endregion
 
+    #region Part1
     private void FollowMouse()
     {
         Vector2 screenMousePosition = Input.mousePosition;
@@ -163,11 +183,16 @@ public class JugManager : MonoBehaviour
 
         if (jug.rotation == targetRotation)
         {
+            shakeAtStart.Kill();
             StartShake();
             SetModeShake();
+
+            lastPositionShakeContainer = shakeContainer.position;
         }
     }
+    #endregion
 
+    #region Shake
     private void StartShake()
     {
         Sequence sequence = DOTween.Sequence();
@@ -177,38 +202,66 @@ public class JugManager : MonoBehaviour
             sequence.Append(OnShake(i));
         }
 
-        //sequence.OnComplete(EndLevel);
+        sequence.OnComplete(EndLevel);
 
         sequence.Play();
     }
 
     private Tween OnShake(int index, float time = 0)
     {
-        //if (time == 0)
-            return shakeContainer.DOShakePosition(shakeTime / nShake, GetShakeForceFromIndex(index), GetShakeVibratoFromIndex(index), 90f, false, false, ShakeRandomnessMode.Harmonic);
-        //else
-            //return shakeContainer.DOShakePosition(time, GetShakeForceFromIndex(index), GetShakeVibratoFromIndex(index), 90f, false, false, ShakeRandomnessMode.Harmonic);
+        float shakeValue = shakeCurve.Evaluate((float)index / (float)nShake);
+
+        return shakeContainer.DOShakePosition(
+            shakeTime / nShake,
+            GetShakeForce(shakeValue),
+            GetShakeVibrato(shakeValue),
+            90f,
+            false,
+            false,
+            ShakeRandomnessMode.Harmonic);
     }
 
-    private float GetShakeForceFromIndex(int index)
-    {
-        float shakeValue = shakeEase.Evaluate((float)index / (float)nShake);
-        return (shakeForceEnd - shakeForceStart) * shakeValue + shakeForceStart;
-    }
-        //=> (shakeForceEnd - shakeForceStart) / nShake * index + shakeForceStart;
+    private float GetShakeForce(float shakeValue)
+        => (shakeForceEnd - shakeForceStart) * shakeValue + shakeForceStart;
 
-    private int GetShakeVibratoFromIndex(int index)
+    private int GetShakeVibrato(float shakeValue)
+        => Mathf.RoundToInt((shakeVibratoEnd - shakeVibratoStart) * shakeValue + shakeVibratoStart);
+    #endregion
+
+    private void SpawnParticle()
     {
-        float shakeValue = shakeEase.Evaluate((float)index / (float)shakeTime);
-        //Debug.Log(shakeCurveValue * shakeVibratoStart / shakeVibratoEnd);
-        return Mathf.RoundToInt((shakeVibratoEnd - shakeVibratoStart) * shakeValue + shakeVibratoStart);
+        float shakeValue = shakeCurve.Evaluate(elapsedShakeTimeFromStart / shakeTime);
+
+        int nWaterDrops = Mathf.RoundToInt((nMaxWaterDrop - nMinWaterDrop) * shakeValue + nMinWaterDrop);
+
+        Vector3 currentVelocity = lastPositionShakeContainer - shakeContainer.position;
+
+        WaterDrop waterDrop;
+        Vector3 direction;
+        float force;
+
+        if (Vector3.Dot(currentVelocity, minAngleVectorDirectionWaterDrop) > 0 &&
+            Vector3.Dot(currentVelocity, maxAngleVectorDirectionWaterDrop) > 0)
+        {
+            for (int i = 0; i < nWaterDrops; i++)
+            {
+                waterDrop = Instantiate(waterDropPrefab, particleSystem.position, UnityEngine.Random.rotation);
+
+                direction = Quaternion.AngleAxis(UnityEngine.Random.Range(-waterDropOffset, waterDropOffset), Vector3.forward) * currentVelocity;
+
+                force = Mathf.Clamp(shakeCurve.Evaluate(elapsedShakeTimeFromStart / shakeTime) * waterForce, minWaterForce, maxWaterForce);
+
+                waterDrop.rigidBody.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+            }
+        }
+
+        lastPositionShakeContainer = shakeContainer.position;
     }
-        //=> (shakeVibratoEnd - shakeVibratoStart) / nShake * index + shakeVibratoStart;
 
     private void EndLevel()
     {
-        OnShake(nShake, 2);
+        SetModeVoid();
+        Cursor.visible = true;
+        //OnShake(nShake, 2);
     }
-
-
 }
