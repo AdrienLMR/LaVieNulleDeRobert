@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: Level1
       objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: 3cdca0bb5be61f54791c0071b7cf269e, type: 3}
+      propertyPath: levelToLoad_
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: 3cdca0bb5be61f54791c0071b7cf269e, type: 3}
+      propertyPath: allLevelToLoad.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5229656571676420181, guid: 3cdca0bb5be61f54791c0071b7cf269e, type: 3}
       propertyPath: m_Name
       value: SceneManager
