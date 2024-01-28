@@ -34,7 +34,7 @@ public class Polaroïd : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
         LevelManager.Instance.NextLevel();
     }
