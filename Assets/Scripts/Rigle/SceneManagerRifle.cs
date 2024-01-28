@@ -8,6 +8,8 @@ public class SceneManagerRifle : MonoBehaviour
     [SerializeField] private Transform barrelEnd;
     [SerializeField] private GameObject bullet;
     [SerializeField] private int bulletNumber = 5;
+    [SerializeField] private GameObject smoke = default;
+    [SerializeField] private Transform smokePosition = default;
 
 	private int actualBulletNumber = 0;
 
@@ -26,13 +28,14 @@ public class SceneManagerRifle : MonoBehaviour
 		{
 			Quaternion rotationBullet = rifle.rotation;
 			Instantiate(bullet, barrelEnd.position, rotationBullet);
+			Instantiate(smoke, smokePosition.position, Quaternion.identity);
 
 			actualBulletNumber++;
 		}
 
 		if (actualBulletNumber > bulletNumber)
 		{
-			Debug.Log("PlusDeBalleMonPOte");
+			LevelManager.Instance.NextLevel();
 		}
 	}
 }

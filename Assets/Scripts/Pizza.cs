@@ -85,7 +85,7 @@ public class ScenePizza : MonoBehaviour
         if (counterCanCutPizza >= canCutPizza)
 		{
             stopToutToutTout = true;
-            Debug.Log("LoadNextScene");
+            LevelManager.Instance.NextLevel();
 		}
     }
 
