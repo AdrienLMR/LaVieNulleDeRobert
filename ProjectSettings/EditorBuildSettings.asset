@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterCreation.unity
     guid: 0c8a0f6a0f2e2fa4cb6e5558bca1c46f
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/LevelWedding.unity
     guid: 2aa863c5114725045a5c83fbdc04ebe1
   - enabled: 1
     path: Assets/Scenes/LevelJug.unity
