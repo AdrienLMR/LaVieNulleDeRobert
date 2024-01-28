@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -70,6 +71,18 @@ public class JugManager : MonoBehaviour
         targetRotation = Quaternion.AngleAxis(currentAngle + angleMaxRotation, axis);
 
         _camera = LevelManager.GetCamera();
+
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+
+        SetModePlay();
+
+        shakeAtStart = shakeContainer.DOShakePosition(1f, 0.05f, 10, 90f, false, false, ShakeRandomnessMode.Harmonic).SetLoops(-1);
+        shakeAtStart.Play();
     }
 
     private void Update()
@@ -104,16 +117,7 @@ public class JugManager : MonoBehaviour
         DoAction = DoActionShake;
     }
 
-    private void DoActionVoid()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SetModePlay();
-
-            shakeAtStart = shakeContainer.DOShakePosition(1f, 0.05f, 10, 90f, false, false, ShakeRandomnessMode.Harmonic).SetLoops(-1);
-            shakeAtStart.Play();
-        }
-    }
+    private void DoActionVoid() {}
 
     private void DoActionPlay()
     {
@@ -266,6 +270,7 @@ public class JugManager : MonoBehaviour
 
     private void EndLevel()
     {
+        WaterDrop.DestroySelfs();
         SetModeVoid();
         Cursor.visible = true;
         LevelManager.Instance.NextLevel();

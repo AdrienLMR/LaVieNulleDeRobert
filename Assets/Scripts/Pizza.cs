@@ -84,22 +84,16 @@ public class ScenePizza : MonoBehaviour
             }
         }
 
-        if (counterCanCutPizza >= canCutPizza)
+        if (counterCanCutPizza >= canCutPizza && !move)
 		{
             stopToutToutTout = true;
-            StartCoroutine(Wait());
-		}
-    }
 
-    private IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(2f);
+            foreach (var item in allLineRenderer)
+            {
+                Destroy(item);
+            }
 
-		foreach (var item in allLineRenderer)
-		{
-            Destroy(item);
-		}
-
-        LevelManager.Instance.NextLevel();
+            LevelManager.Instance.NextLevel();
+        }
     }
 }
