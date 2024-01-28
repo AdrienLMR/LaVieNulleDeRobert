@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,22 @@ public class SceneManagerRifle : MonoBehaviour
 
 	private int actualBulletNumber = 0;
 
-	private void Update()
+	private Action DoAction;
+
+    private void Start()
+    {
+		DoAction = DoActionUpdate;
+    }
+
+    private void Update()
 	{
+		DoAction();
+	}
+
+	private void DoActionVoid(){ }
+
+	private void DoActionUpdate()
+    {
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePosition.z = 0;
 		Vector3 riflePosition = rifle.position;
@@ -35,6 +50,7 @@ public class SceneManagerRifle : MonoBehaviour
 
 		if (actualBulletNumber > bulletNumber)
 		{
+			DoAction = DoActionVoid;
 			LevelManager.Instance.NextLevel();
 		}
 	}

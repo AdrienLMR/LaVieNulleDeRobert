@@ -29,6 +29,7 @@ public class Polaroïd : MonoBehaviour
 
     public static void AnimationEnded()
     {
+        Debug.Log("a");
         Instance.StartCoroutine(Instance.Wait());
     }
 

@@ -73,8 +73,6 @@ public class Ballon : MonoBehaviour
 
 			foreach (var item in allBallons)
 			{
-				Debug.Log("AddForce");
-
 				Vector3 force = (item.transform.position - bulletPosition).normalized * forceBallon;
 
 				item.shakeTween.Kill();
