@@ -26,9 +26,14 @@ public class ContainerElementChangeColor : MonoBehaviour
 		index += factor;
 
 		if (index <= -1)
+		{
 			index = allElements.Count - 1;
+
+		}
 		else if (index >= allElements.Count)
+		{
 			index = 0;
+		}
 
 		Color newColor = allElements[index];
 
