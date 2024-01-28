@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -6,7 +7,8 @@ public class RingManager : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private Rigidbody2D rigidBody = default;
-    [SerializeField] private Camera _camera = default;
+
+    private Camera _camera = default;
 
     [Header("Values")]
     [SerializeField] private Vector3 startPosition = Vector3.zero;
@@ -22,8 +24,18 @@ public class RingManager : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
-        transform.position = startPosition;
+        _camera = LevelManager.GetCamera();
 
+        SetModeVoid();
+        transform.position = startPosition;
+        rigidBody.gravityScale = 0f;   
+        StartCoroutine(WaitBeforePlay());
+    }
+
+    private IEnumerator WaitBeforePlay()
+    {
+        yield return new WaitForSeconds(1f);
+        rigidBody.gravityScale = 1f;
         SetModePlay();
     }
 
@@ -122,5 +134,6 @@ public class RingManager : MonoBehaviour
     private void EndLevel()
     {
         SetModeVoid();
+        LevelManager.Instance.NextLevel();
     }
 }

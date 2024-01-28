@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+	[SerializeField] private string loadingSceneName = string.Empty;
+
 	[SerializeField] private List<string> allLevelsToLoad = new List<string>();
 	private string currentLevel = default;
 	private bool unloadFinished = true;
 	private int indexLevel = -1;
 
-	private LevelManager Instance;
+	[SerializeField] private Camera _camera = default;
+
+	public static LevelManager Instance;
 
 	private void Awake()
 	{
@@ -21,10 +25,16 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
-		ChangeLevel();
+		//NextLevel();
+		indexLevel++;
+		SceneManager.LoadSceneAsync(allLevelsToLoad[indexLevel], LoadSceneMode.Additive);
+		currentLevel = allLevelsToLoad[indexLevel];
 	}
 
-	private void ChangeLevel()
+	public static Camera GetCamera()
+		=> Instance._camera;
+
+	public void NextLevel()
 	{
 		indexLevel++;
 		StartCoroutine(LoadLevel(allLevelsToLoad[indexLevel]));
@@ -32,7 +42,9 @@ public class LevelManager : MonoBehaviour
 
 	private IEnumerator LoadLevel(string levelToLoad)
 	{
-		Debug.Log("Affichez l'ecran de chargement");
+		SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
+
+		yield return new WaitForSeconds(3f);
 
 		if (currentLevel != null)
 		{
@@ -47,8 +59,8 @@ public class LevelManager : MonoBehaviour
 		yield return new WaitUntil(() => asyncLoad.isDone);
 
 		currentLevel = levelToLoad;
+
 		Debug.Log("load level " + currentLevel);
-		Debug.Log("Desaffichez l'ecran de chargement");
 		yield return null;
 	}
 
@@ -61,4 +73,15 @@ public class LevelManager : MonoBehaviour
 		yield return null;
 	}
 
+	public void UnloadLoading()
+    {
+		StartCoroutine(_UnloadLoading());
+    }
+
+	private IEnumerator _UnloadLoading()
+    {
+		AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(loadingSceneName, UnloadSceneOptions.None);
+		yield return new WaitUntil(() => asyncLoad.isDone);
+		yield return null;
+	}
 }

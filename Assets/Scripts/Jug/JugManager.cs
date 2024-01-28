@@ -6,8 +6,6 @@ using UnityEngine;
 public class JugManager : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private Camera _camera = default;
-
     [SerializeField] private Transform jugContainer = default;
     [SerializeField] private Transform shakeContainer = default;
     [SerializeField] private Transform jug = default;
@@ -22,6 +20,8 @@ public class JugManager : MonoBehaviour
     [SerializeField] private AnimationCurve shakeCurve = default;
 
     [SerializeField] private WaterDrop waterDropPrefab = default;
+
+    private Camera _camera = default;
 
     [Header("Values")]
     [SerializeField] private float maxJugHeight = 0f;
@@ -70,6 +70,8 @@ public class JugManager : MonoBehaviour
 
         jug.rotation.ToAngleAxis(out float currentAngle, out Vector3 axis);
         targetRotation = Quaternion.AngleAxis(currentAngle + angleMaxRotation, axis);
+
+        _camera = LevelManager.GetCamera();
     }
 
     private void Update()
