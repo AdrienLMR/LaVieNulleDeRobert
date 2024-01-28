@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eyes
+  m_text: Hair
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -269,6 +269,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContainerElement
       objectReference: {fileID: 0}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e21cd8252af0a54dbdde02e71c4d9b2, type: 3}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e61942dd35c2ab544a8d2b0f36f8895d, type: 3}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 105b95e2a0427fe46a0b000da8a94db0, type: 3}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 52d044da4df0c3d47bd127f01891285d, type: 3}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: bb9fe4b80daa66b4bb76e3ab67ce5778, type: 3}
+    - target: {fileID: 2653605758495215185, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: allElements.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: dc73f0542c6c25740b41f747b425bc95, type: 3}
+    - target: {fileID: 9006910705812820637, guid: 3fb556d31c27b56459e7e4ffb092db2b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e21cd8252af0a54dbdde02e71c4d9b2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
