@@ -39,8 +39,6 @@ public class ContainerElement : MonoBehaviour
 		else if (index >= allElements.Count)
 			index = 0;
 
-		Debug.Log("index");
-
 		Sprite newSprite = allElements[index];
 		Sprite newSpriteRobert = allRobertElements[index];
 

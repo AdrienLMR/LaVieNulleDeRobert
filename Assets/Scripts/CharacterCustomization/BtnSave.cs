@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,38 +6,52 @@ using UnityEngine.UI;
 
 public class BtnSave : MonoBehaviour
 {
-	[SerializeField] private float timeToGoToNextScene = 10f;
-	[SerializeField] private Transform poseToAddAnim = default;
-	[SerializeField] private GameObject animToAdd = default;
-	[SerializeField] private GameObject objectToDeactivate = default;
-	[SerializeField] private Button btn;
+    [SerializeField] private float timeToGoToNextScene = 10f;
+    [SerializeField] private Transform poseToAddAnim = default;
+    [SerializeField] private GameObject animToAdd = default;
+    [SerializeField] private GameObject objectToDeactivate = default;
+    [SerializeField] private Button btn;
 
-	private float counterToGoToNextScene;
-	private bool startCounter = false;
+    private GameObject anim = default;
 
-	private void Start()
-	{
-		//btn = GetComponent<Button>();
-		btn.onClick.AddListener(OnClick);
-	}
+    private float counterToGoToNextScene;
+    private bool startCounter = false;
 
-	private void OnClick()
-	{
-		startCounter = true;
-		Instantiate(animToAdd, poseToAddAnim.position, Quaternion.identity);
-		objectToDeactivate.SetActive(false);
-	}
+    private Action DoAction;
 
-	private void Update()
-	{
-		if (startCounter)
-		{
-			counterToGoToNextScene += Time.deltaTime;
+    private void Start()
+    {
+        DoAction = DoActionCheckNextScene;
 
-			if (counterToGoToNextScene >= timeToGoToNextScene)
-			{
-				LevelManager.Instance.NextLevel();
-			}
-		}
-	}
+        btn.onClick.AddListener(OnClick);
+    }
+
+    private void OnClick()
+    {
+        startCounter = true;
+        anim = Instantiate(animToAdd, poseToAddAnim.position, Quaternion.identity);
+        objectToDeactivate.SetActive(false);
+    }
+
+    private void Update()
+    {
+        DoAction();
+    }
+
+    private void DoActionVoid() { }
+
+    private void DoActionCheckNextScene()
+    {
+        if (startCounter)
+        {
+            counterToGoToNextScene += Time.deltaTime;
+
+            if (counterToGoToNextScene >= timeToGoToNextScene)
+            {
+                DoAction = DoActionVoid;
+                Destroy(anim);
+                LevelManager.Instance.NextLevel();
+            }
+        }
+    }
 }
