@@ -360,7 +360,7 @@ Canvas:
   m_GameObject: {fileID: 1348572706}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -903,6 +903,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3173934806480525311, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887627167177112036, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887627167177112036, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1050
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887627167177112036, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -516
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312444106253775410, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: animContainerFaceXPosition
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312444106253775410, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: endPositionrobertclothes.y
+      value: 520
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312444106253775410, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
+      propertyPath: endPositionrobertclothes.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313941626233509473, guid: b496ffa9c80fe8344909a7cc6bc58dac, type: 3}
