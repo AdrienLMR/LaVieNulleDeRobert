@@ -29,8 +29,6 @@ public class BtnSave : MonoBehaviour
 
 	private void Update()
 	{
-		Debug.Log(startCounter);
-
 		if (startCounter)
 		{
 			counterToGoToNextScene += Time.deltaTime;
