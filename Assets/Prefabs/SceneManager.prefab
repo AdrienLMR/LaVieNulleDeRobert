@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f5410ad0c8d914f9b2a99f41c1f155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingSceneName: Loading
   allLevelsToLoad:
   - TitleScreen
+  - LevelWedding
+  - LevelJug
