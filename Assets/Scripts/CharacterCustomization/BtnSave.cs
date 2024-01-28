@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public class BtnSave : MonoBehaviour
 {
-	[SerializeField] private GameObject screenToSpawn;
 	[SerializeField] private float timeToGoToNextScene = 10f;
+	[SerializeField] private Transform poseToAddAnim = default;
+	[SerializeField] private GameObject animToAdd = default;
+	[SerializeField] private GameObject objectToDeactivate = default;
+	[SerializeField] private Button btn;
 
 	private float counterToGoToNextScene;
-	private Button btn;
 	private bool startCounter = false;
 
 	private void Start()
 	{
-		btn = GetComponent<Button>();
+		//btn = GetComponent<Button>();
 		btn.onClick.AddListener(OnClick);
 	}
 
 	private void OnClick()
 	{
-		screenToSpawn.SetActive(true);
 		startCounter = true;
+		Instantiate(animToAdd, poseToAddAnim.position, Quaternion.identity);
+		objectToDeactivate.SetActive(false);
 	}
 
 	private void Update()
 	{
+		Debug.Log(startCounter);
+
 		if (startCounter)
 		{
 			counterToGoToNextScene += Time.deltaTime;
