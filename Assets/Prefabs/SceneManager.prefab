@@ -48,7 +48,13 @@ MonoBehaviour:
   allLevelsToLoad:
   - TitleScreen
   - CharacterCreation
-  - LevelWedding
-  - LevelJug
+  - "Polaro\xEFdRifleStart"
   - Rifle
+  - "Polaro\xEFdRifleEnd"
+  - "Polaro\xEFdJugStart"
+  - LevelJug
+  - "Polaro\xEFdJugEnd"
+  - "Polaro\xEFdWeddingStart"
+  - LevelWedding
+  - "Polaro\xEFdWeddingEnd"
   _camera: {fileID: 0}
