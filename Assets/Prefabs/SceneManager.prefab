@@ -54,6 +54,9 @@ MonoBehaviour:
   - "Polaro\xEFdJugStart"
   - LevelJug
   - "Polaro\xEFdJugEnd"
+  - "Polaro\xEFdPizzaStart"
+  - Pizza
+  - "Polaro\xEFdPizzaEnd"
   - "Polaro\xEFdWeddingStart"
   - LevelWedding
   - "Polaro\xEFdWeddingEnd"
