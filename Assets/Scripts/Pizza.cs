@@ -16,6 +16,7 @@ public class ScenePizza : MonoBehaviour
     [SerializeField] private float canCutPizza = 3;
     [SerializeField] private float increaseSpeedRotation = 50;
     [SerializeField] private float increaseSpeed = 10;
+    [SerializeField] private List<GameObject> allLineRenderer = new List<GameObject>();
 
     private bool isAnimating = false;
     private bool move = false;
@@ -54,6 +55,7 @@ public class ScenePizza : MonoBehaviour
                     startDirection = couteau.forward;
                     startPosition = couteau.position;
                     actualRenderer = Instantiate(lineRenderer).GetComponent<LineRenderer>();
+                    allLineRenderer.Add(actualRenderer.gameObject);
                     counterToAddPointLineRenderer = timeToAddPointToLineRenderer;
                     counterSizeLineRenderer = 0;
                     counterCanCutPizza++;
@@ -92,6 +94,12 @@ public class ScenePizza : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(2f);
+
+		foreach (var item in allLineRenderer)
+		{
+            Destroy(item);
+		}
+
         LevelManager.Instance.NextLevel();
     }
 }

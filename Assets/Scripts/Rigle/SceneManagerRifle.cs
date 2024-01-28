@@ -12,6 +12,8 @@ public class SceneManagerRifle : MonoBehaviour
     [SerializeField] private GameObject smoke = default;
     [SerializeField] private Transform smokePosition = default;
 
+	public List<GameObject> allImpacts = new List<GameObject>();
+
 	private int actualBulletNumber = 0;
 
 	private Action DoAction;
@@ -51,6 +53,12 @@ public class SceneManagerRifle : MonoBehaviour
 		if (actualBulletNumber > bulletNumber)
 		{
 			DoAction = DoActionVoid;
+			
+			foreach (var item in allImpacts)
+			{
+				Destroy(item);
+			}
+
 			LevelManager.Instance.NextLevel();
 		}
 	}
