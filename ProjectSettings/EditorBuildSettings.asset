@@ -20,4 +20,40 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 32159813478721249a7d10d20a381d7a
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: c1d50252736fbc542a72e83070d0b3b0
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: bda8890c2b8defc4f964650c289c09bf
+  - enabled: 1
+    path: Assets/Scenes/Pizza.unity
+    guid: 7f4de64d6e578fb4f858bd310123e898
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdJugEnd.unity"
+    guid: 8cdaa4488e8ba8c4d941d972d49b9e9c
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdJugStart.unity"
+    guid: 51a923af143b6754ab1dcdeabf8535a1
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdPizzaEnd.unity"
+    guid: e93c5ba6c51a18f42b201d6fde7c1bc5
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdPizzaStart.unity"
+    guid: 4e4f9a4d04f63284aa9d63e417b7cb1c
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdRifleEnd.unity"
+    guid: 3bc00c5c37a60904faf99a605a83fc6d
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdRifleStart.unity"
+    guid: bc6e43876e7a3bb48b8f8b379afa77f0
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdWeddingEnd.unity"
+    guid: ad24eb497bf4ac84786ba840a291afa9
+  - enabled: 1
+    path: "Assets/Scenes/Polaro\xEFdWeddingStart.unity"
+    guid: 21762416dee91b3458ca15ff12171d01
+  - enabled: 1
+    path: Assets/Scenes/Rifle.unity
+    guid: 9387c13a08375dd4189f7fa9a61d3984
   m_configObjects: {}

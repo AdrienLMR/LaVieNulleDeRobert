@@ -6,15 +6,11 @@ using UnityEngine;
 public class JugManager : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private Camera _camera = default;
-
     [SerializeField] private Transform jugContainer = default;
     [SerializeField] private Transform shakeContainer = default;
     [SerializeField] private Transform jug = default;
     [SerializeField] private Transform jugPoint = default;
-    [SerializeField] private Transform hand = default;
-    [SerializeField] private Transform arm = default;
-    [SerializeField] private Transform particleSystem = default;
+    [SerializeField] private Transform _particleSystem = default;
 
     [SerializeField] private Transform colliderOnCollideTopLeft = default;
     [SerializeField] private Transform colliderOnCollideBottomRight = default;
@@ -22,6 +18,8 @@ public class JugManager : MonoBehaviour
     [SerializeField] private AnimationCurve shakeCurve = default;
 
     [SerializeField] private WaterDrop waterDropPrefab = default;
+
+    private Camera _camera = default;
 
     [Header("Values")]
     [SerializeField] private float maxJugHeight = 0f;
@@ -70,6 +68,8 @@ public class JugManager : MonoBehaviour
 
         jug.rotation.ToAngleAxis(out float currentAngle, out Vector3 axis);
         targetRotation = Quaternion.AngleAxis(currentAngle + angleMaxRotation, axis);
+
+        _camera = LevelManager.GetCamera();
     }
 
     private void Update()
@@ -202,6 +202,8 @@ public class JugManager : MonoBehaviour
             sequence.Append(OnShake(i));
         }
 
+        sequence.Append(OnShake(nShake, 5));
+
         sequence.OnComplete(EndLevel);
 
         sequence.Play();
@@ -249,7 +251,7 @@ public class JugManager : MonoBehaviour
             {
                 randomAngle = UnityEngine.Random.Range(0, 360);
 
-                waterDrop = Instantiate(waterDropPrefab, particleSystem.position, Quaternion.AngleAxis(randomAngle, Vector3.forward));
+                waterDrop = Instantiate(waterDropPrefab, _particleSystem.position, Quaternion.AngleAxis(randomAngle, Vector3.forward));
 
                 direction = Quaternion.AngleAxis(UnityEngine.Random.Range(-waterDropOffset, waterDropOffset), Vector3.forward) * currentVelocity;
 
@@ -266,6 +268,6 @@ public class JugManager : MonoBehaviour
     {
         SetModeVoid();
         Cursor.visible = true;
-        //OnShake(nShake, 2);
+        LevelManager.Instance.NextLevel();
     }
 }

@@ -44,3 +44,6 @@ TagManager:
   - name: Hand
     uniqueID: 2532221057
     locked: 0
+  - name: Loading
+    uniqueID: 3448851445
+    locked: 0

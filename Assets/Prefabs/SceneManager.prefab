@@ -44,5 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f5410ad0c8d914f9b2a99f41c1f155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingSceneName: Loading
   allLevelsToLoad:
   - TitleScreen
+  - CharacterCreation
+  - "Polaro\xEFdRifleStart"
+  - Rifle
+  - "Polaro\xEFdRifleEnd"
+  - "Polaro\xEFdJugStart"
+  - LevelJug
+  - "Polaro\xEFdJugEnd"
+  - "Polaro\xEFdPizzaStart"
+  - Pizza
+  - "Polaro\xEFdPizzaEnd"
+  - "Polaro\xEFdWeddingStart"
+  - LevelWedding
+  - "Polaro\xEFdWeddingEnd"
+  _camera: {fileID: 0}

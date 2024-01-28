@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ContainerMultiElement : MonoBehaviour
 {
-    [SerializeField] private List<MultiImageToChange> allElements = new List<MultiImageToChange>();
+    [SerializeField] private List<Sprite> allElements = new List<Sprite>();
+    [SerializeField] private List<MultiImageToChange> allElementsRobert = new List<MultiImageToChange>();
     [SerializeField] private Button leftArrow = default;
     [SerializeField] private Button rightArrow = default;
     [SerializeField] private Image imageElement = default;
@@ -21,12 +22,12 @@ public class ContainerMultiElement : MonoBehaviour
 		leftArrow.onClick.AddListener(() => SwitchElement(-1));
 		rightArrow.onClick.AddListener(() => SwitchElement(1));
 
-		imageElement.sprite = allElements[0].allElements[0] ;
+		imageElement.sprite = allElements[0]/*.allElements[0] */;
 
 		for (int i = 0; i < imageToChange.Count; i++)
 		{
 			Image localImageToChange = imageToChange[i];
-			localImageToChange.sprite = allElements[0].allElements[i];
+			localImageToChange.sprite = allElementsRobert[0].allElements[i];
 		}
 	}
 
@@ -42,10 +43,10 @@ public class ContainerMultiElement : MonoBehaviour
 		for (int i = 0; i < imageToChange.Count; i++)
 		{
 			Image localImageToChange = imageToChange[i];
-			localImageToChange.sprite = allElements[index].allElements[i];
+			localImageToChange.sprite = allElementsRobert[index].allElements[i];
 		}
 
-		Sprite newSprite = allElements[index].allElements[0];
+		Sprite newSprite = allElements[index]/*.allElements[0]*/;
 
 		imageElement.sprite = newSprite;
 		//switchElement?.Invoke(this, newSprite);
