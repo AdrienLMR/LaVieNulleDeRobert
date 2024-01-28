@@ -66,6 +66,7 @@ public class ChangeScreenCustomization : MonoBehaviour
 			containerVerticalLayoutClothes.DOMoveX(startXPoseClothes.x, 0.5f, true);
 
 			background.DOSizeDelta(background.sizeDelta + Vector2.up * animIncreaseSizebackground, 0.5f);
+			robert.DOSizeDelta(new Vector2(600,800), 0.5f);
 
 			robert.DOMove(startPositionRobert + endPositionrobertclothes, 0.5f, true);
 
@@ -80,6 +81,7 @@ public class ChangeScreenCustomization : MonoBehaviour
 			containerVerticalLayoutFace.transform.position = startXPoseFace + Vector3.right * animContainerFaceXPosition;
 			containerVerticalLayoutFace.DOMoveX(startXPoseFace.x, 0.5f, true);
 
+			robert.DOSizeDelta(new Vector2(850, 1050), 0.5f);
 			background.DOSizeDelta(new Vector2(background.sizeDelta.x,startHeightRobertBackground), 0.5f) ;
 			robert.DOMove(startPositionRobert, 0.5f, true);
 
