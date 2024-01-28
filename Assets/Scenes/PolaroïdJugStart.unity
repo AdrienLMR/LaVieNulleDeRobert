@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 898690350}
+  waitTime: 2
 --- !u!114 &898690348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1780106555
 AudioListener:
   m_ObjectHideFlags: 0
