@@ -33,6 +33,7 @@ public class ScenePizza : MonoBehaviour
     {
         if (!stopToutToutTout)
         {
+            Debug.Log("MaMere");
             if (!move)
             {
                 //Vector2 screenMousePosition = Input.mousePosition;
@@ -82,18 +83,20 @@ public class ScenePizza : MonoBehaviour
                     move = false;
                 }
             }
-        }
 
-        if (counterCanCutPizza >= canCutPizza && !move)
-		{
-            stopToutToutTout = true;
-
-            foreach (var item in allLineRenderer)
+            if (counterCanCutPizza >= canCutPizza && !move)
             {
-                Destroy(item);
-            }
+                stopToutToutTout = true;
 
-            LevelManager.Instance.NextLevel();
+                foreach (var item in allLineRenderer)
+                {
+                    Destroy(item);
+                }
+
+                LevelManager.Instance.NextLevel();
+            }
         }
+
+    
     }
 }

@@ -11,7 +11,7 @@ public class SceneManagerRifle : MonoBehaviour
     [SerializeField] private int bulletNumber = 5;
     [SerializeField] private GameObject smoke = default;
     [SerializeField] private Transform smokePosition = default;
-    private GameObject smokeInstantiate = default;
+    private List<GameObject> smokeInstantiate = new List<GameObject>();
 
 	public List<GameObject> allImpacts = new List<GameObject>();
 
@@ -49,7 +49,8 @@ public class SceneManagerRifle : MonoBehaviour
 			Quaternion rotationBullet = rifle.rotation;
 			Bullet bullet_ = Instantiate(bullet, barrelEnd.position, rotationBullet).GetComponent<Bullet>();
 			bullet_.sceneManagerRifle = this;
-			smokeInstantiate = Instantiate(smoke, smokePosition.position, Quaternion.identity);
+			GameObject smokeInstantiate_ = Instantiate(smoke, smokePosition.position, Quaternion.identity);
+			smokeInstantiate.Add(smokeInstantiate_);
 			actualBulletNumber++;
 		}
 
@@ -61,7 +62,12 @@ public class SceneManagerRifle : MonoBehaviour
 			{
 				Destroy(item);
 			}
-			Destroy(smokeInstantiate);
+
+			foreach (var item in smokeInstantiate)
+			{
+				Destroy(item);
+			}
+
 			LevelManager.Instance.NextLevel();
 		}
 	}
