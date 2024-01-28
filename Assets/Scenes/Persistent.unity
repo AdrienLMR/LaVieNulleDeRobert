@@ -266,6 +266,42 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[5]
+      value: "Polaro\xEFdPizzaStart"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[6]
+      value: Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[7]
+      value: "Polaro\xEFdPizzaEnd"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[8]
+      value: "Polaro\xEFdWeddingStart"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[9]
+      value: LevelWedding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[10]
+      value: "Polaro\xEFdWeddingEnd"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[11]
+      value: "Polaro\xEFdJugStart"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[12]
+      value: LevelJug
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
+      propertyPath: allLevelsToLoad.Array.data[13]
+      value: "Polaro\xEFdJugEnd"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774918704056062574, guid: b1d4022b0e7a4b64abf531405bcad32b, type: 3}
       propertyPath: allLevelsToLoad.Array.data[14]
       value: EndGame
       objectReference: {fileID: 0}
