@@ -10,4 +10,10 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.up * speed * Time.deltaTime;
     }
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+        Debug.Log("ColisionBullet");
+        Destroy(gameObject);
+	}
 }

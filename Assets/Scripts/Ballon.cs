@@ -17,8 +17,8 @@ public class Ballon : MonoBehaviour
 
 	private float strength;
 	private int vibrato;
-	private float counterStopPhysics;
 	
+	public float counterStopPhysics;
 	public Rigidbody2D rgb;
 	public Tween shakeTween;
 	public bool stopPhysics = false;
@@ -45,10 +45,7 @@ public class Ballon : MonoBehaviour
 			{
 				rgb.velocity = Vector2.zero;
 
-				shakeTween = transform.DOShakePosition(0.5f, strength, vibrato, 90, false, false).SetLoops(-1).OnStepComplete(() => {
-					strength += additionalStength;
-					vibrato += additionalVibrato;
-				});
+				StartCoroutine(RestartTweenShake());
 
 				counterStopPhysics = 0;
 				stopPhysics = false;
@@ -56,20 +53,34 @@ public class Ballon : MonoBehaviour
 		}
 	}
 
+	private IEnumerator RestartTweenShake()
+	{
+		yield return new WaitForSeconds(0.1f);
+
+		shakeTween = transform.DOShakePosition(0.5f, strength, vibrato, 90, false, false).SetLoops(-1).OnStepComplete(() => {
+			shakeTween.Restart();
+		});
+
+		yield return null;
+	}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.TryGetComponent<Bullet>(out Bullet bullet))
 		{
-			Debug.Log("Colision");
 			List<Ballon> allBallons = FindObjectsOfType<Ballon>().ToList();
 			Vector3 bulletPosition = collision.transform.position;
 
 			foreach (var item in allBallons)
 			{
+				Debug.Log("AddForce");
+
 				Vector3 force = (item.transform.position - bulletPosition).normalized * forceBallon;
 
-				item.stopPhysics = true;
 				item.shakeTween.Kill();
+				item.rgb.velocity = Vector2.zero;
+				item.counterStopPhysics = 0f;
+				item.stopPhysics = true;
 				item.rgb.AddForce(force);
 			}
 		}
