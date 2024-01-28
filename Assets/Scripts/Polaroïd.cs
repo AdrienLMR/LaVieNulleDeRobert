@@ -29,13 +29,12 @@ public class Polaroïd : MonoBehaviour
 
     public static void AnimationEnded()
     {
-        Debug.Log("a");
         Instance.StartCoroutine(Instance.Wait());
     }
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(4f);
 
         LevelManager.Instance.NextLevel();
     }

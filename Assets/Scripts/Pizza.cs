@@ -85,8 +85,13 @@ public class ScenePizza : MonoBehaviour
         if (counterCanCutPizza >= canCutPizza)
 		{
             stopToutToutTout = true;
-            LevelManager.Instance.NextLevel();
+            StartCoroutine(Wait());
 		}
     }
 
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+        LevelManager.Instance.NextLevel();
+    }
 }
