@@ -8,6 +8,7 @@ public delegate void SwitchElement(ChangeScreenCustomization sender, Sprite newS
 public class ContainerElement : MonoBehaviour
 {
     [SerializeField] private List<Sprite> allElements = new List<Sprite>();
+    [SerializeField] private List<Sprite> allRobertElements = new List<Sprite>();
     [SerializeField] private Button leftArrow = default;
     [SerializeField] private Button rightArrow = default;
     [SerializeField] private Image imageElement = default;
@@ -23,9 +24,10 @@ public class ContainerElement : MonoBehaviour
 		rightArrow.onClick.AddListener(() => SwitchElement(1));
 
 		Sprite startSprite = allElements[0];
+		Sprite startSpriteRobert = allRobertElements[0];
 
 		imageElement.sprite = startSprite;
-		imageToChange.sprite = startSprite;
+		imageToChange.sprite = startSpriteRobert;
 	}
 
 	private void SwitchElement(int factor)
@@ -38,9 +40,10 @@ public class ContainerElement : MonoBehaviour
 			index = 0;
 
 		Sprite newSprite = allElements[index];
+		Sprite newSpriteRobert = allRobertElements[index];
 
 		imageElement.sprite = newSprite;
-		imageToChange.sprite = newSprite;
+		imageToChange.sprite = newSpriteRobert;
 
 		//switchElement?.Invoke(this, newSprite);
 	}
