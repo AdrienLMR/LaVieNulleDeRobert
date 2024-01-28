@@ -21,9 +21,9 @@ public class Loading : MonoBehaviour
     }
     #endregion
 
-    public static void StartAnim()
+    public static void Loaded()
     {
-        Instance.animator.Play("Start");
+        LevelManager.Instance.LoadLevel();
     }
 
     public static void Stop()

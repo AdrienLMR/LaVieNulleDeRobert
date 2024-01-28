@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
 	private bool unloadFinished = true;
 	private int indexLevel = -1;
 
+	private string levelToLoad = string.Empty;
+
 	[SerializeField] private Camera _camera = default;
 
 	public static LevelManager Instance;
@@ -37,14 +39,28 @@ public class LevelManager : MonoBehaviour
 	public void NextLevel()
 	{
 		indexLevel++;
-		StartCoroutine(LoadLevel(allLevelsToLoad[indexLevel]));
+		levelToLoad = allLevelsToLoad[indexLevel];
+		StartCoroutine(LoadingScreenAppear());
+		//StartCoroutine(LoadLevel(allLevelsToLoad[indexLevel]));
 	}
+
+	private IEnumerator LoadingScreenAppear()
+    {
+		AsyncOperation asyncLoading = SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
+
+		yield return null;
+	}
+
+	public void LoadLevel()
+    {
+		StartCoroutine(LoadLevel(levelToLoad));
+    }
 
 	private IEnumerator LoadLevel(string levelToLoad)
 	{
-		SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
+		//AsyncOperation asyncLoading = SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
 
-		yield return new WaitForSeconds(3f);
+		//yield return new WaitUntil(() => asyncLoading.isDone);
 
 		if (currentLevel != null)
 		{
@@ -60,7 +76,9 @@ public class LevelManager : MonoBehaviour
 
 		currentLevel = levelToLoad;
 
-		Debug.Log("load level " + currentLevel);
+		Loading.Stop();
+
+		//Debug.Log("load level " + currentLevel);
 		yield return null;
 	}
 
@@ -81,7 +99,6 @@ public class LevelManager : MonoBehaviour
 	private IEnumerator _UnloadLoading()
     {
 		AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(loadingSceneName, UnloadSceneOptions.None);
-		yield return new WaitUntil(() => asyncLoad.isDone);
 		yield return null;
 	}
 }

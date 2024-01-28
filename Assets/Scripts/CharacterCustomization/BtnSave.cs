@@ -33,7 +33,7 @@ public class BtnSave : MonoBehaviour
 
 			if (counterToGoToNextScene >= timeToGoToNextScene)
 			{
-				Debug.Log("GoToNextScene");
+				LevelManager.Instance.NextLevel();
 			}
 		}
 	}
