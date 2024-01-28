@@ -11,7 +11,7 @@ public class AnimFinger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.DOShakeRotation(5f, new Vector3(0, 0, 5),1, randomness: 2f);
+        transform.DOShakeRotation(5f, new Vector3(0, 0, 5),1, 2f);
         
     }
 }
