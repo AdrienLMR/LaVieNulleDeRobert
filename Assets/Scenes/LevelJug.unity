@@ -404,6 +404,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 245000303}
     - target: {fileID: 8282209352165321682, guid: b2181b9b72bb038488fc2dc6168fe041, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 245000307}
+    - target: {fileID: 8282209352165321682, guid: b2181b9b72bb038488fc2dc6168fe041, type: 3}
       propertyPath: colliderOnCollideTopLeft
       value: 
       objectReference: {fileID: 9196422699742934310}

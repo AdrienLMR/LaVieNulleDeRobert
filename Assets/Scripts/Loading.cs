@@ -23,7 +23,6 @@ public class Loading : MonoBehaviour
 
     public static void StartAnim()
     {
-        Debug.Log("a");
         Instance.animator.Play("Start");
     }
 
