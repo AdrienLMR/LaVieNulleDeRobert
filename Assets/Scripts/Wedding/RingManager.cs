@@ -132,7 +132,7 @@ public class RingManager : MonoBehaviour
     #endregion
 
     private void EndLevel()
-    {
+    { 
         SetModeVoid();
         LevelManager.Instance.NextLevel();
     }
