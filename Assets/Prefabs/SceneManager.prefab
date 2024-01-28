@@ -47,5 +47,8 @@ MonoBehaviour:
   loadingSceneName: Loading
   allLevelsToLoad:
   - TitleScreen
+  - CharacterCreation
   - LevelWedding
   - LevelJug
+  - Rifle
+  _camera: {fileID: 0}
