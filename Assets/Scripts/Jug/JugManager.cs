@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -19,6 +20,7 @@ public class JugManager : MonoBehaviour
     [SerializeField] private AnimationCurve shakeCurve = default;
 
     [SerializeField] private WaterDrop waterDropPrefab = default;
+    private List<WaterDrop> waterDrops;
 
     private Camera _camera = default;
 
@@ -71,6 +73,8 @@ public class JugManager : MonoBehaviour
         targetRotation = Quaternion.AngleAxis(currentAngle + angleMaxRotation, axis);
 
         _camera = LevelManager.GetCamera();
+
+        waterDrops = new List<WaterDrop>();
 
         StartCoroutine(Wait());
     }
@@ -163,9 +167,6 @@ public class JugManager : MonoBehaviour
             jug.position.y <= colliderOnCollideTopLeft.position.y &&
             jug.position.y >= colliderOnCollideBottomRight.position.y)
         {
-            if (jugContainer.position.y < minJugHeightOnCollide)
-                SetModeMoveJugUp();
-            else
                 SetModeRotateJug();
         }
     }
@@ -178,7 +179,11 @@ public class JugManager : MonoBehaviour
             moveJugUpSpeed * Time.deltaTime);
 
         if (jugContainer.position.y >= minJugHeightOnCollide)
-            SetModeRotateJug();
+        {
+            shakeAtStart.Kill();
+            StartShake();
+            SetModeShake();
+        }
     }
 
     private void RotateJug()
@@ -262,6 +267,8 @@ public class JugManager : MonoBehaviour
                 force = Mathf.Clamp(shakeCurve.Evaluate(elapsedShakeTimeFromStart / shakeTime) * waterForce, minWaterForce, maxWaterForce);
 
                 waterDrop.rigidBody.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+
+                waterDrops.Add(waterDrop);
             }
         }
 
@@ -270,7 +277,6 @@ public class JugManager : MonoBehaviour
 
     private void EndLevel()
     {
-        WaterDrop.DestroySelfs();
         SetModeVoid();
         Cursor.visible = true;
         LevelManager.Instance.NextLevel();

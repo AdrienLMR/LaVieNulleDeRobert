@@ -288,6 +288,10 @@ MonoBehaviour:
   bulletNumber: 5
   smoke: {fileID: 8970039083420493541, guid: f8b0c62395dc604448948cfd6d2577b5, type: 3}
   smokePosition: {fileID: 1820010983}
+  allImpacts: []
+  actualBulletNumber: 0
+  finishBullet: 0
+  collision: 0
 --- !u!4 &475686926
 Transform:
   m_ObjectHideFlags: 0
@@ -352,11 +356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.44
+      value: -5.41
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.43
+      value: -1.39
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -554,11 +558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.06
+      value: 7.13
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.15
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1531444766571746266, guid: 036eedc151ab67b4887f7a1bbd3cabaa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1086,7 +1090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4386178222559270089, guid: 79e1ac35e66a7c94482d0ec9d74157b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.38
+      value: -3.88
       objectReference: {fileID: 0}
     - target: {fileID: 4386178222559270089, guid: 79e1ac35e66a7c94482d0ec9d74157b1, type: 3}
       propertyPath: m_LocalPosition.z

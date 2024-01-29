@@ -33,7 +33,6 @@ public class ScenePizza : MonoBehaviour
     {
         if (!stopToutToutTout)
         {
-            Debug.Log("MaMere");
             if (!move)
             {
                 //Vector2 screenMousePosition = Input.mousePosition;
@@ -88,15 +87,20 @@ public class ScenePizza : MonoBehaviour
             {
                 stopToutToutTout = true;
 
-                foreach (var item in allLineRenderer)
-                {
-                    Destroy(item);
-                }
-
-                LevelManager.Instance.NextLevel();
+                StartCoroutine(Wait());
             }
         }
+    }
 
-    
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+
+        foreach (var item in allLineRenderer)
+        {
+            Destroy(item);
+        }
+
+        LevelManager.Instance.NextLevel();
     }
 }

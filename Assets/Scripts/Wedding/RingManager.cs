@@ -115,7 +115,7 @@ public class RingManager : MonoBehaviour
         SetModePutTheRing();
 
         Finger finger = collision.gameObject.GetComponent<Finger>();
-        transform.position = new Vector3(transform.position.x, finger.transform.position.y, 0);
+        transform.position = new Vector3(finger.transform.position.x + 1, finger.transform.position.y, 0);
 
         Destroy(rigidBody);
     }

@@ -51,13 +51,14 @@ MonoBehaviour:
   - "Polaro\xEFdRifleStart"
   - Rifle
   - "Polaro\xEFdRifleEnd"
-  - "Polaro\xEFdJugStart"
-  - LevelJug
-  - "Polaro\xEFdJugEnd"
   - "Polaro\xEFdPizzaStart"
   - Pizza
   - "Polaro\xEFdPizzaEnd"
   - "Polaro\xEFdWeddingStart"
   - LevelWedding
   - "Polaro\xEFdWeddingEnd"
+  - "Polaro\xEFdJugStart"
+  - LevelJug
+  - "Polaro\xEFdJugEnd"
+  - EndGame
   _camera: {fileID: 0}
